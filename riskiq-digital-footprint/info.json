@@ -1,0 +1,623 @@
+{
+  "name": "riskiq-digital-footprint",
+  "label": "RiskIQ Digital Footprint",
+  "version": "1.0.0",
+  "description": "RiskIQ Digital Footprint gives complete visibility beyond the firewall. Unlike scanners and IP-dependent data vendors, RiskIQ Digital Footprint is the only solution with composite intelligence, code-level discovery and automated threat detection and exposure monitoring—security intelligence mapped to your attack surface.",
+  "publisher": "Community",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "category": "Threat Intelligence",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "server_url",
+        "description": "Server URL of RiskIQ WHOISIQ to which you will connect and perform automated operations.",
+        "placeholder": "e.g. https://api.riskiq.net",
+        "value": "https://api.riskiq.net"
+      },
+      {
+        "title": "Username",
+        "tooltip": "Username of RiskIQ server",
+        "description": "Username configured for your account to access the RiskIQ Digital Footprint server.",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "username"
+      },
+      {
+        "title": "API Key",
+        "tooltip": "Api key of RiskIQ server",
+        "description": "API key configured for your account to access the RiskIQ Digital Footprint server.",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "api_key"
+      },
+      {
+        "title": "Verify SSL",
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "add_assets",
+      "title": "Add Assets",
+      "description": "Add one or more assets and a set of properties",
+      "category": "investigation",
+      "annotation": "add_assets",
+      "output_schema": {
+      },
+      "parameters": [
+        {
+          "title": "Request Body",
+          "name": "request",
+          "tooltip": "Specify the Request Body of assets which you want to add into inventory.",
+          "description": "Specify the Request Body of assets which you want to add into inventory.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "value": {
+            "assets": [
+              {
+                "name": "string",
+                "type": "string"
+              }
+            ],
+            "properties": [
+              {
+                "name": "string",
+                "value": {},
+                "action": "UPDATE"
+              }
+            ],
+            "confirm": true,
+            "targetAssetTypes": [
+              "string"
+            ]
+          }
+        },
+        {
+          "title": "Fail on Error",
+          "name": "failOnError",
+          "tooltip": "If true then the request will fail if an invalid update is detected. If false then any invalid updates will be skipped but others will continue.",
+          "description": "If true then the request will fail if an invalid update is detected. If false then any invalid updates will be skipped but others will continue.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": true
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_assets_by_type",
+      "title": "Get Assets By Type",
+      "description": "Retrieve the asset of the specified UUID from Global Inventory.",
+      "category": "investigation",
+      "annotation": "get_assets_by_type",
+      "output_schema": {
+      },
+      "parameters": [
+        {
+          "title": "Asset Type",
+          "name": "type",
+          "tooltip": "Specify the type of asset to retrieve or the type of asset detail to retrieve.",
+          "description": "Specify the type of asset to retrieve or the type of asset detail to retrieve.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Domain",
+            "Host",
+            "IP Address",
+            "IP Block",
+            "ASN",
+            "Page",
+            "SSL Cert",
+            "Contact"
+          ]
+        },
+        {
+          "title": "Asset Name",
+          "name": "name",
+          "tooltip": "Specify the name of the asset to retrieve.",
+          "description": "Specify the name of the asset to retrieve.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        },
+        {
+          "title": "Search in Global Inventory ",
+          "name": "global",
+          "tooltip": "Setting this value to true will search all of global inventory. Setting it to false will search for assets in the workspace associated with the authentication token.",
+          "description": "Setting this value to true will search all of global inventory. Setting it to false will search for assets in the workspace associated with the authentication token.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false
+        },
+        {
+          "title": "Size",
+          "name": "size",
+          "tooltip": "Global Inventory assets potentially contain pages of related data, for example attributes, cookies and host pairs. Size determines the number of these associated items that are returned.",
+          "description": "Global Inventory assets potentially contain pages of related data, for example attributes, cookies and host pairs. Size determines the number of these associated items that are returned.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer"
+        },
+        {
+          "title": "Recent Asset",
+          "name": "recent",
+          "tooltip": "If specified and 'true', then only return recent data on the asset.",
+          "description": "If specified and 'true', then only return recent data on the asset.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_assets_by_uuid",
+      "title": "Get Assets By UUID",
+      "description": "Retrieve the asset of the specified UUID from Global Inventory.",
+      "category": "investigation",
+      "annotation": "get_assets_by_uuid",
+      "output_schema": {},
+      "parameters": [
+        {
+          "title": "Asset UUID",
+          "name": "uuid",
+          "tooltip": "Specify the UUID of the asset to retrieve.",
+          "description": "Specify the UUID of the asset to retrieve.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        },
+        {
+          "title": "Search in Global Inventory ",
+          "name": "global",
+          "tooltip": "Setting this value to true will search all of global inventory. Setting it to false will search for assets in the workspace associated with the authentication token.",
+          "description": "Setting this value to true will search all of global inventory. Setting it to false will search for assets in the workspace associated with the authentication token.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false
+        },
+        {
+          "title": "Recent Asset",
+          "name": "recent",
+          "tooltip": "If specified and 'true', then only return recent data on the asset.",
+          "description": "If specified and 'true', then only return recent data on the asset.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "update_assets",
+      "title": "Update Assets",
+      "description": "Update one or more assets and a set of properties",
+      "category": "investigation",
+      "annotation": "update_assets",
+      "output_schema": {},
+      "parameters": [
+        {
+          "title": "Request Body",
+          "name": "request",
+          "tooltip": "Specify the Request Body of assets which you want to update into inventory.",
+          "description": "Specify the Request Body of assets which you want to update into inventory.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "value": {
+            "assets": [
+              {
+                "name": "string",
+                "type": "string"
+              }
+            ],
+            "query": {
+              "query": "string",
+              "filters": {
+                "condition": "AND",
+                "operator": "EQ",
+                "name": "string",
+                "value": {}
+              }
+            },
+            "properties": [
+              {
+                "name": "string",
+                "value": {},
+                "action": "UPDATE"
+              }
+            ],
+            "targetAssetTypes": [
+              "string"
+            ]
+          }
+        },
+        {
+          "title": "Fail on Error",
+          "name": "failOnError",
+          "tooltip": "If true then the request will fail if an invalid update is detected. If false then any invalid updates will be skipped but others will continue.",
+          "description": "If true then the request will fail if an invalid update is detected. If false then any invalid updates will be skipped but others will continue.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": true
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_connected_asset",
+      "title": "Get Connected Assets",
+      "description": "Retrieve the set of assets which are connected to the requested asset.",
+      "category": "investigation",
+      "annotation": "get_assets_connected",
+      "output_schema": {},
+      "parameters": [
+        {
+          "title": "Asset Type",
+          "name": "type",
+          "tooltip": "Specify the type of the asset to find connected assets for.",
+          "description": "Specify the type of the asset to find connected assets for.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Domain",
+            "Host",
+            "IP Address",
+            "IP Block",
+            "ASN",
+            "Page",
+            "SSL Cert",
+            "Contact"
+          ]
+        },
+        {
+          "title": "Asset Name",
+          "name": "name",
+          "tooltip": "Specify the name of the asset for which connections are to be fetched. e.g riskiq.com",
+          "description": "Specify the name of the asset for which connections are to be fetched. e.g riskiq.com.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        },
+        {
+          "title": "Search in Global Inventory ",
+          "name": "global",
+          "tooltip": "Setting this value to true will search all of global inventory. Setting it to false will search for assets in the workspace associated with the authentication token.",
+          "description": "Setting this value to true will search all of global inventory. Setting it to false will search for assets in the workspace associated with the authentication token.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false
+        },
+        {
+          "title": "Page Number",
+          "name": "page",
+          "tooltip": "The index of the page to retrieve. The index is zero based so the first page is page 0.",
+          "description": "The index of the page to retrieve. The index is zero based so the first page is page 0.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer"
+        },
+        {
+          "title": "Page Size",
+          "name": "size",
+          "tooltip": "The response contains a page of assets for each related asset type. Size determines the number of associated assets of each type that are returned.",
+          "description": "The response contains a page of assets for each related asset type. Size determines the number of associated assets of each type that are returned.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_task_status",
+      "title": "Get Task Status",
+      "description": "Retrieve the status of an asynchronous global inventory update task.",
+      "category": "investigation",
+      "annotation": "get_task_status",
+      "output_schema": {
+        "taskClass": "",
+        "userID": "",
+        "startedAt": "",
+        "completedAt": "",
+        "state": "",
+        "reason": "",
+        "taskName": "",
+        "key": {
+          "workspaceID": "",
+          "uuid": ""
+        },
+        "data": {
+          "estimated": "",
+          "progress": "",
+          "updated": "",
+          "properties": [
+            {}
+          ]
+        }
+      },
+      "parameters": [
+        {
+          "title": "Task ID",
+          "name": "id",
+          "tooltip": "Specify the id of the asynchronous task to retrieve.",
+          "description": "Specify the id of the asynchronous task to retrieve.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_changed_asset",
+      "title": "Get Changed Asset",
+      "description": "Retrieve the list of confirmed assets that have been added or removed from inventory over the given time period. Retrieve the list of asset detail changes in inventory over the given time period.",
+      "category": "investigation",
+      "annotation": "get_changed_asset",
+      "output_schema": {
+        "runId": "",
+        "name": "",
+        "type": "",
+        "measure": "",
+        "enterprise": "",
+        "state": "",
+        "priority": ""
+      },
+      "parameters": [
+        {
+          "title": "Asset Type",
+          "name": "type",
+          "tooltip": "Specify the type of asset to retrieve or the type of asset detail to retrieve.",
+          "description": "Specify the type of asset to retrieve or the type of asset detail to retrieve.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Domain",
+            "Host",
+            "IP Address",
+            "IP Block",
+            "ASN",
+            "Page",
+            "SSL Cert",
+            "Contact",
+            "Self Hosted Resource",
+            "ThirdParty Hosted Resource"
+          ]
+        },
+        {
+          "title": "Date",
+          "name": "date",
+          "tooltip": "Specify the date of the run in which the changes were identified.",
+          "description": "Specify the date of the run in which the changes were identified.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime"
+        },
+        {
+          "title": "Range",
+          "name": "range",
+          "tooltip": "Specify the period of time over which the changes were identified. Supported ranges are 1, 7 and 30 days.",
+          "description": "Specify the period of time over which the changes were identified. Supported ranges are 1, 7 and 30 days.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "1",
+            "7",
+            "30"
+          ],
+          "value": "1"
+        },
+        {
+          "title": "Measure",
+          "name": "measure",
+          "tooltip": "Specify the type of change.",
+          "description": "Specify the type of change.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "ADDED",
+            "REMOVED"
+          ],
+          "value": "ADDED"
+        },
+        {
+          "title": "Brand",
+          "name": "brand",
+          "tooltip": "Specify the brand which will be returned.",
+          "description": "Specify the brand which will be returned.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        },
+        {
+          "title": "Organization",
+          "name": "organization",
+          "tooltip": "Only assets having this organization will be returned.",
+          "description": "Only assets having this organization will be returned.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        },
+        {
+          "title": "Tag",
+          "name": "tag",
+          "tooltip": "Only assets having this tag will be returned.",
+          "description": "Only assets having this tag will be returned.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        },
+        {
+          "title": "Page Number",
+          "name": "page",
+          "tooltip": "The index of the page to retrieve. The index is zero based so the first page is page 0.",
+          "description": "The index of the page to retrieve. The index is zero based so the first page is page 0.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "value": "0"
+        },
+        {
+          "title": "Page Size",
+          "name": "size",
+          "tooltip": "The response contains a page of assets for each related asset type. Size determines the number of associated assets of each type that are returned.",
+          "description": "The response contains a page of assets for each related asset type. Size determines the number of associated assets of each type that are returned.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "value": "20"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_changed_asset_summary",
+      "title": "Get Changed Asset Summary",
+      "description": "Retrieve summary describing counts of confirmed assets that have been added or removed from inventory over the given time period.",
+      "category": "investigation",
+      "annotation": "get_changed_asset_summary",
+      "output_schema": [
+        {
+          "runDate": "",
+          "runId": "",
+          "deltas": [
+            {
+              "type": "",
+              "aggregations": [
+                {
+                  "removed": "",
+                  "added": "",
+                  "changed": "",
+                  "count": "",
+                  "range": "",
+                  "difference": ""
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "title": "Date",
+          "name": "date",
+          "tooltip": "Specify the date of the run in which the changes were identified.",
+          "description": "Specify the date of the run in which the changes were identified.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime"
+        },
+        {
+          "title": "Range",
+          "name": "range",
+          "tooltip": "Specify the period of time over which the changes were identified. Supported ranges are 1, 7 and 30 days.",
+          "description": "Specify the period of time over which the changes were identified. Supported ranges are 1, 7 and 30 days.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "1",
+            "7",
+            "30"
+          ],
+          "value": "1"
+        },
+        {
+          "title": "Brand",
+          "name": "brand",
+          "tooltip": "Summary counts will only include assets having associated brand.",
+          "description": "Summary counts will only include assets having associated brand.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        },
+        {
+          "title": "Organization",
+          "name": "organization",
+          "tooltip": "Summary counts will only include assets having associated organization.",
+          "description": "Summary counts will only include assets having associated organization.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        },
+        {
+          "title": "Tag",
+          "name": "tag",
+          "tooltip": "Summary counts will only include assets having associated tag.",
+          "description": "Summary counts will only include assets having this tag.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        }
+      ],
+      "enabled": true
+    }
+  ]
+}

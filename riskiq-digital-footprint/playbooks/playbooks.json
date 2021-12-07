@@ -1,0 +1,853 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - RiskIQ Digital Footprint - 1.0.0",
+      "description": "Sample playbooks for \"RiskIQ Digital Footprint\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": "/api/3/images/6292273c-7841-4c0e-b93b-656103069ba5",
+      "uuid": "56dc26ac-2d52-45d2-8192-f4af83f4bc01",
+      "id": 117,
+      "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+      "createDate": 1638882177,
+      "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+      "modifyDate": 1638882177,
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Assets",
+          "aliasName": null,
+          "tag": "#RiskIQ Digital Footprint",
+          "description": "Update one or more assets and a set of properties",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638882417,
+          "collection": "/api/3/workflow_collections/56dc26ac-2d52-45d2-8192-f4af83f4bc01",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/1b480300-5268-4e92-9e45-eeb3d7b1f217",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "bcba6f37-95bd-4f9d-b836-c82158aba698",
+                "title": "RiskIQ Digital Footprint: Update Assets",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "1b480300-5268-4e92-9e45-eeb3d7b1f217",
+              "id": 6548
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Assets",
+              "description": null,
+              "arguments": {
+                "name": "RiskIQ Digital Footprint",
+                "config": "''",
+                "params": {
+                  "request": {
+                    "query": {
+                      "query": "string",
+                      "filters": {
+                        "name": "string",
+                        "value": [],
+                        "operator": "EQ",
+                        "condition": "AND"
+                      }
+                    },
+                    "assets": [
+                      {
+                        "name": "string",
+                        "type": "string"
+                      }
+                    ],
+                    "properties": [
+                      {
+                        "name": "string",
+                        "value": [],
+                        "action": "UPDATE"
+                      }
+                    ],
+                    "targetAssetTypes": [
+                      "string"
+                    ]
+                  },
+                  "failOnError": true
+                },
+                "version": "1.0.0",
+                "connector": "riskiq-digital-footprint",
+                "operation": "update_assets",
+                "operationTitle": "Update Assets",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "7c4107f7-9636-4c62-875b-b6bfbc2a4f9e",
+              "id": 6549
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Update Assets",
+              "targetStep": "/api/3/workflow_steps/7c4107f7-9636-4c62-875b-b6bfbc2a4f9e",
+              "sourceStep": "/api/3/workflow_steps/1b480300-5268-4e92-9e45-eeb3d7b1f217",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "52822543-be73-44de-b48a-6eef479e8b5c"
+            }
+          ],
+          "priority": null,
+          "uuid": "149b3756-54b5-4523-b7ce-6009aba5804b",
+          "recordTags": [
+            "RiskIQ",
+            "DigitalFootprint"
+          ],
+          "id": 1361,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638882177,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638882417,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Add Assets",
+          "aliasName": null,
+          "tag": "#RiskIQ Digital Footprint",
+          "description": "Add one or more assets and a set of properties",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638882293,
+          "collection": "/api/3/workflow_collections/56dc26ac-2d52-45d2-8192-f4af83f4bc01",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/61560576-8404-4840-a940-7e892e24a3e3",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "75447868-2731-4843-8551-758d0c93ae8a",
+                "title": "RiskIQ Digital Footprint: Add Assets",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "61560576-8404-4840-a940-7e892e24a3e3",
+              "id": 6542
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Add Assets",
+              "description": null,
+              "arguments": {
+                "name": "RiskIQ Digital Footprint",
+                "config": "''",
+                "params": {
+                  "request": {
+                    "assets": [
+                      {
+                        "name": "string",
+                        "type": "string"
+                      }
+                    ],
+                    "confirm": true,
+                    "properties": [
+                      {
+                        "name": "string",
+                        "value": [],
+                        "action": "UPDATE"
+                      }
+                    ],
+                    "targetAssetTypes": [
+                      "string"
+                    ]
+                  },
+                  "failOnError": true
+                },
+                "version": "1.0.0",
+                "connector": "riskiq-digital-footprint",
+                "operation": "add_assets",
+                "operationTitle": "Add Assets",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "9c8a461d-9c70-45b6-afb2-5469404c9259",
+              "id": 6543
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Add Assets",
+              "targetStep": "/api/3/workflow_steps/9c8a461d-9c70-45b6-afb2-5469404c9259",
+              "sourceStep": "/api/3/workflow_steps/61560576-8404-4840-a940-7e892e24a3e3",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "e952d90e-9ecb-4269-961d-1df1f1f9c3e6"
+            }
+          ],
+          "priority": null,
+          "uuid": "2c56c272-1818-4ea0-9570-d347907dfcdd",
+          "recordTags": [
+            "RiskIQ",
+            "DigitalFootprint"
+          ],
+          "id": 1358,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638882177,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638882293,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Assets By UUID",
+          "aliasName": null,
+          "tag": "#RiskIQ Digital Footprint",
+          "description": "Retrieve the asset of the specified UUID from Global Inventory.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638882327,
+          "collection": "/api/3/workflow_collections/56dc26ac-2d52-45d2-8192-f4af83f4bc01",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/45137979-be48-400b-811d-f4cd1d91d7c3",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "dccefe8b-a5bf-47b0-8561-0b5dbf5ad1b8",
+                "title": "RiskIQ Digital Footprint: Get Assets By UUID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "45137979-be48-400b-811d-f4cd1d91d7c3",
+              "id": 6546
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Assets By UUID",
+              "description": null,
+              "arguments": {
+                "name": "RiskIQ Digital Footprint",
+                "config": "''",
+                "params": {
+                  "uuid": "",
+                  "global": "",
+                  "recent": ""
+                },
+                "version": "1.0.0",
+                "connector": "riskiq-digital-footprint",
+                "operation": "get_assets_by_uuid",
+                "operationTitle": "Get Assets By UUID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "70954800-ffb1-49a8-9e1a-0bb4b713314e",
+              "id": 6547
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Assets By UUID",
+              "targetStep": "/api/3/workflow_steps/70954800-ffb1-49a8-9e1a-0bb4b713314e",
+              "sourceStep": "/api/3/workflow_steps/45137979-be48-400b-811d-f4cd1d91d7c3",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "6d803a33-7e50-4ee3-b04d-a4e6faf9aaee"
+            }
+          ],
+          "priority": null,
+          "uuid": "438d967f-6ca5-4994-8c35-81aa2ba0ac3a",
+          "recordTags": [
+            "RiskIQ",
+            "DigitalFootprint"
+          ],
+          "id": 1360,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638882177,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638882328,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Changed Asset Summary",
+          "aliasName": null,
+          "tag": "#RiskIQ Digital Footprint",
+          "description": "Retrieve summary describing counts of confirmed assets that have been added or removed from inventory over the given time period.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638882361,
+          "collection": "/api/3/workflow_collections/56dc26ac-2d52-45d2-8192-f4af83f4bc01",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/510a851d-fb57-420e-9578-eff25d49750e",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "92f2dee6-d2a3-426b-be4f-68e3de3a9f62",
+                "title": "RiskIQ Digital Footprint: Get Changed Asset Summary",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "510a851d-fb57-420e-9578-eff25d49750e",
+              "id": 6556
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Changed Asset Summary",
+              "description": null,
+              "arguments": {
+                "name": "RiskIQ Digital Footprint",
+                "config": "''",
+                "params": {
+                  "tag": "",
+                  "date": "",
+                  "brand": "",
+                  "range": "1",
+                  "organization": ""
+                },
+                "version": "1.0.0",
+                "connector": "riskiq-digital-footprint",
+                "operation": "get_changed_asset_summary",
+                "operationTitle": "Get Changed Asset Summary",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "ea745e28-ef6c-4dcf-9325-c8209a2d58a2",
+              "id": 6557
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Changed Asset Summary",
+              "targetStep": "/api/3/workflow_steps/ea745e28-ef6c-4dcf-9325-c8209a2d58a2",
+              "sourceStep": "/api/3/workflow_steps/510a851d-fb57-420e-9578-eff25d49750e",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "c80e067a-f0ac-4355-9a82-ebf22daa2772"
+            }
+          ],
+          "priority": null,
+          "uuid": "84479df9-7136-4371-bf62-33e2787eb40a",
+          "recordTags": [
+            "RiskIQ",
+            "DigitalFootprint"
+          ],
+          "id": 1365,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638882177,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638882361,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Task Status",
+          "aliasName": null,
+          "tag": "#RiskIQ Digital Footprint",
+          "description": "Retrieve the status of an asynchronous global inventory update task.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638882399,
+          "collection": "/api/3/workflow_collections/56dc26ac-2d52-45d2-8192-f4af83f4bc01",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/cec97167-a95e-41f9-89c3-62b8fcbf3769",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "f07838d4-3065-458b-bab7-443dacf53f9c",
+                "title": "RiskIQ Digital Footprint: Get Task Status",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "cec97167-a95e-41f9-89c3-62b8fcbf3769",
+              "id": 6552
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Task Status",
+              "description": null,
+              "arguments": {
+                "name": "RiskIQ Digital Footprint",
+                "config": "''",
+                "params": {
+                  "id": ""
+                },
+                "version": "1.0.0",
+                "connector": "riskiq-digital-footprint",
+                "operation": "get_task_status",
+                "operationTitle": "Get Task Status",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "c69159a0-580e-46e4-bfbd-e16351d1b749",
+              "id": 6553
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Task Status",
+              "targetStep": "/api/3/workflow_steps/c69159a0-580e-46e4-bfbd-e16351d1b749",
+              "sourceStep": "/api/3/workflow_steps/cec97167-a95e-41f9-89c3-62b8fcbf3769",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "b3b3aa1c-f5aa-48b1-a9c0-630478d68202"
+            }
+          ],
+          "priority": null,
+          "uuid": "96d9d1af-6a7c-4fe7-80c6-91c834873482",
+          "recordTags": [
+            "RiskIQ",
+            "DigitalFootprint"
+          ],
+          "id": 1363,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638882177,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638882399,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Connected Assets",
+          "aliasName": null,
+          "tag": "#RiskIQ Digital Footprint",
+          "description": "Retrieve the set of assets which are connected to the requested asset.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638882381,
+          "collection": "/api/3/workflow_collections/56dc26ac-2d52-45d2-8192-f4af83f4bc01",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/4e9a5ac3-da50-4cb0-b39e-1af1479aa573",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "c6227dce-5864-4536-a5d9-4e27efe75007",
+                "title": "RiskIQ Digital Footprint: Get Connected Assets",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "4e9a5ac3-da50-4cb0-b39e-1af1479aa573",
+              "id": 6550
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Connected Assets",
+              "description": null,
+              "arguments": {
+                "name": "RiskIQ Digital Footprint",
+                "config": "''",
+                "params": {
+                  "name": "",
+                  "page": "",
+                  "size": "",
+                  "type": "",
+                  "global": ""
+                },
+                "version": "1.0.0",
+                "connector": "riskiq-digital-footprint",
+                "operation": "get_connected_asset",
+                "operationTitle": "Get Connected Assets",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "863b045c-3d44-43e7-a3fc-cc0724318d1b",
+              "id": 6551
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Connected Assets",
+              "targetStep": "/api/3/workflow_steps/863b045c-3d44-43e7-a3fc-cc0724318d1b",
+              "sourceStep": "/api/3/workflow_steps/4e9a5ac3-da50-4cb0-b39e-1af1479aa573",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "33bf99c0-5f9b-4b4c-8eb0-4994f0d4267e"
+            }
+          ],
+          "priority": null,
+          "uuid": "cc4553c9-6cdc-48e4-8d81-09dfa448617e",
+          "recordTags": [
+            "RiskIQ",
+            "DigitalFootprint"
+          ],
+          "id": 1362,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638882177,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638882382,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Assets By Type",
+          "aliasName": null,
+          "tag": "#RiskIQ Digital Footprint",
+          "description": "Retrieve the asset of the specified UUID from Global Inventory.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638882309,
+          "collection": "/api/3/workflow_collections/56dc26ac-2d52-45d2-8192-f4af83f4bc01",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/759e8838-6689-485b-8e12-7966ff524235",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "0e5266ee-ab01-404c-abec-c43f60ff8300",
+                "title": "RiskIQ Digital Footprint: Get Assets By Type",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "759e8838-6689-485b-8e12-7966ff524235",
+              "id": 6544
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Assets By Type",
+              "description": null,
+              "arguments": {
+                "name": "RiskIQ Digital Footprint",
+                "config": "''",
+                "params": {
+                  "name": "",
+                  "size": "",
+                  "type": "",
+                  "global": "",
+                  "recent": ""
+                },
+                "version": "1.0.0",
+                "connector": "riskiq-digital-footprint",
+                "operation": "get_assets_by_type",
+                "operationTitle": "Get Assets By Type",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "8ba0158c-5401-44fb-b1f5-9cc5b8aad5f1",
+              "id": 6545
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Assets By Type",
+              "targetStep": "/api/3/workflow_steps/8ba0158c-5401-44fb-b1f5-9cc5b8aad5f1",
+              "sourceStep": "/api/3/workflow_steps/759e8838-6689-485b-8e12-7966ff524235",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "48222d2f-1a7a-446e-acfc-2129bbdf9c25"
+            }
+          ],
+          "priority": null,
+          "uuid": "ce32510a-598a-49b3-afc0-2f3f2d77c54b",
+          "recordTags": [
+            "RiskIQ",
+            "DigitalFootprint"
+          ],
+          "id": 1359,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638882177,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638882310,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Changed Asset",
+          "aliasName": null,
+          "tag": "#RiskIQ Digital Footprint",
+          "description": "Retrieve the list of confirmed assets that have been added or removed from inventory over the given time period. Retrieve the list of asset detail changes in inventory over the given time period.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1638882343,
+          "collection": "/api/3/workflow_collections/56dc26ac-2d52-45d2-8192-f4af83f4bc01",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/9690ac5d-1207-4ffc-baec-d70c1c6c3ff6",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "87c87c82-29fe-4b1f-901d-7d8bed971b70",
+                "title": "RiskIQ Digital Footprint: Get Changed Asset",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "9690ac5d-1207-4ffc-baec-d70c1c6c3ff6",
+              "id": 6554
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Changed Asset",
+              "description": null,
+              "arguments": {
+                "name": "RiskIQ Digital Footprint",
+                "config": "''",
+                "params": {
+                  "tag": "",
+                  "date": "",
+                  "page": "0",
+                  "size": "20",
+                  "type": "",
+                  "brand": "",
+                  "range": "1",
+                  "measure": "ADDED",
+                  "organization": ""
+                },
+                "version": "1.0.0",
+                "connector": "riskiq-digital-footprint",
+                "operation": "get_changed_asset",
+                "operationTitle": "Get Changed Asset",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "d47b24e8-d61e-463b-b127-bb4a7b88dea5",
+              "id": 6555
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Changed Asset",
+              "targetStep": "/api/3/workflow_steps/d47b24e8-d61e-463b-b127-bb4a7b88dea5",
+              "sourceStep": "/api/3/workflow_steps/9690ac5d-1207-4ffc-baec-d70c1c6c3ff6",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "a6cbd833-1ba4-466f-83e0-cf69d1c85f0f"
+            }
+          ],
+          "priority": null,
+          "uuid": "e0611778-b599-4286-9357-ce24206207c0",
+          "recordTags": [
+            "RiskIQ",
+            "DigitalFootprint"
+          ],
+          "id": 1364,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1638882177,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1638882344,
+          "owners": [],
+          "isPrivate": false
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "RiskIQ",
+    "DigitalFootprint"
+  ]
+}
