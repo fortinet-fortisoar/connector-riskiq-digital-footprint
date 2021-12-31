@@ -19,40 +19,38 @@
         "visible": true,
         "type": "text",
         "name": "server_url",
-        "description": "Server URL of RiskIQ WHOISIQ to which you will connect and perform automated operations.",
-        "placeholder": "e.g. https://api.riskiq.net",
-        "value": "https://api.riskiq.net"
+        "value": "https://api.riskiq.net",
+        "description": "The URL of the RiskIQ server to which you will connect and perform the automated operations."
       },
       {
         "title": "Username",
         "tooltip": "Username of RiskIQ server",
-        "description": "Username configured for your account to access the RiskIQ Digital Footprint server.",
         "required": true,
         "editable": true,
         "visible": true,
         "type": "text",
-        "name": "username"
+        "name": "username",
+        "description": "The username used to access the RiskIQ server to which you will connect and perform the automated operations."
       },
       {
         "title": "API Key",
         "tooltip": "Api key of RiskIQ server",
-        "description": "API key configured for your account to access the RiskIQ Digital Footprint server.",
         "required": true,
         "editable": true,
         "visible": true,
         "type": "password",
-        "name": "api_key"
+        "name": "api_key",
+        "description": "The API Key used to access the RiskIQ server to which you will connect and perform the automated operations."
       },
       {
         "title": "Verify SSL",
-        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not",
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
         "required": false,
         "editable": true,
         "visible": true,
         "type": "checkbox",
         "name": "verify_ssl",
-        "value": true
+        "value": true,
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
       }
     ]
   },
